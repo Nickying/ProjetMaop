@@ -14,6 +14,8 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
     String inter;
     String leclerc;
 
+    final String magasin = "magasin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,26 +55,26 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void lancerAuchan(){
-        Intent liste = new Intent(this,votreListe.class);
-        liste.putExtra("Auchan",auchan);
-        startActivityForResult(liste,1);
+        Intent liste = new Intent(this,Liste.class);
+        liste.putExtra(magasin,auchan);
+        startActivity(liste);
     }
 
     private void lancerCarrefour(){
-        Intent liste = new Intent(this,votreListe.class);
-        liste.putExtra("Nom", carrefour);
-        startActivityForResult(liste, 1);
+        Intent liste = new Intent(this,Liste.class);
+        liste.putExtra(magasin, carrefour);
+        startActivity(liste);
     }
 
     private void lancerInter(){
-        Intent liste = new Intent(this,votreListe.class);
-        liste.putExtra("Inter",inter);
-        startActivityForResult(liste,1);
+        Intent liste = new Intent(this,Liste.class);
+        liste.putExtra(magasin, inter);
+        startActivity(liste);
     }
 
     private void lancerLeclerc(){
-        Intent liste = new Intent(this,votreListe.class);
-        liste.putExtra("Leclerc",leclerc);
-        startActivityForResult(liste,1);
+        Intent liste = new Intent(this,Liste.class);
+        liste.putExtra(magasin,leclerc);
+        startActivity(liste);
     }
 }
