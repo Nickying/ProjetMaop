@@ -19,8 +19,12 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
         String value = getIntent().getStringExtra(magasin);
         nomMagasin.setText(value);
         Button Btnquitter = (Button) findViewById(R.id.btnquitter);
+        Button Btnajout = (Button) findViewById(R.id.btnajout);
+        Button Btnmodif = (Button) findViewById(R.id.btnmodif);
 
         Btnquitter.setOnClickListener(this);
+        Btnajout.setOnClickListener(this);
+        Btnmodif.setOnClickListener(this);
     }
 
     public void onClick(View v){
