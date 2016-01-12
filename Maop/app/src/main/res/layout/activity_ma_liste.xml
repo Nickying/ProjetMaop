@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quitter"
-        android:id="@+id/button"
+        android:id="@+id/btnquitter"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -55,10 +55,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_above="@+id/button2"
+        android:layout_above="@+id/btnajout"
         android:layout_below="@+id/searchView"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button"
+        android:layout_alignRight="@+id/btnquitter"
+        android:layout_alignEnd="@+id/btnquitter"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Modifier"
-        android:id="@+id/button2"
+        android:id="@+id/btnmodif"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -74,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter"
-        android:id="@+id/button3"
+        android:id="@+id/btnajout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

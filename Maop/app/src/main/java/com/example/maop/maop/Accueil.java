@@ -25,11 +25,13 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
         ImageButton BtnCarrefour = (ImageButton) findViewById(R.id.imgBoutique2);
         ImageButton BtnInter = (ImageButton) findViewById(R.id.imgBoutique3);
         ImageButton BtnLeclerc = (ImageButton) findViewById(R.id.imgBoutique4);
+        Button Btnquitter = (Button) findViewById(R.id.btnquitter);
 
         BtnAuchan.setOnClickListener(this);
         BtnCarrefour.setOnClickListener(this);
         BtnInter.setOnClickListener(this);
         BtnLeclerc.setOnClickListener(this);
+        Btnquitter.setOnClickListener(this);
 
         auchan="auchan";
         carrefour="carrefour";
@@ -50,6 +52,9 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.imgBoutique4:
                 lancerLeclerc();
+                break;
+            case R.id.btnquitter:
+                quitter();
                 break;
         }
     }
@@ -77,4 +82,9 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
         liste.putExtra(magasin,leclerc);
         startActivity(liste);
     }
+
+    private void quitter(){
+        finish();
+    }
+
 }
