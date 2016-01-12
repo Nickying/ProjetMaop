@@ -55,25 +55,25 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void lancerAuchan(){
-        Intent liste = new Intent(this,Liste.class);
+        Intent liste = new Intent(this,maListe.class);
         liste.putExtra(magasin,auchan);
         startActivity(liste);
     }
 
     private void lancerCarrefour(){
-        Intent liste = new Intent(this,Liste.class);
+        Intent liste = new Intent(this,maListe.class);
         liste.putExtra(magasin, carrefour);
         startActivity(liste);
     }
 
     private void lancerInter(){
-        Intent liste = new Intent(this,Liste.class);
+        Intent liste = new Intent(this,maListe.class);
         liste.putExtra(magasin, inter);
         startActivity(liste);
     }
 
     private void lancerLeclerc(){
-        Intent liste = new Intent(this,Liste.class);
+        Intent liste = new Intent(this,maListe.class);
         liste.putExtra(magasin,leclerc);
         startActivity(liste);
     }
