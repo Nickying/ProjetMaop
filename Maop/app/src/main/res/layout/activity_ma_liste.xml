@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quitter"
+        android:text="@string/retour"
         android:id="@+id/btnquitter"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -54,7 +54,7 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/listProduit"
         android:layout_above="@+id/btnajout"
         android:layout_below="@+id/searchView"
         android:layout_alignRight="@+id/btnquitter"
