@@ -82,7 +82,6 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
         tab = new String[6];
         for(int i=0;i<tab.length;i++){
             tab[i] = afficher.getTab(i);
-            System.out.println(afficher.getTab(i));
         }
     }
 }
