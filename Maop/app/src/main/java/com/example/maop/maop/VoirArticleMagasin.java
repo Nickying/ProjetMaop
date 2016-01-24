@@ -8,47 +8,38 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class maListe extends AppCompatActivity implements View.OnClickListener{
-
-    final String shop = "magasin";
-
+public class VoirArticleMagasin extends AppCompatActivity implements View.OnClickListener{
+    private TextView nomMagasin;
     private ListView liste;
     private ArrayList<String> tab = new ArrayList<String>();
     private String itemValue;
     private int itemPosition;
     private ArrayAdapter<String> adapter;
-    private String magasin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ma_liste);
+        setContentView(R.layout.activity_voir_article_magasin);
 
-        TextView nomMagasin = (TextView) findViewById(R.id.nomMagasin);
-        magasin = getIntent().getStringExtra(shop);
-        nomMagasin.setText(magasin);
-        Button Btnquitter = (Button) findViewById(R.id.btnquitter);
-        Button Btnajout = (Button) findViewById(R.id.btnajout);
-        Button Btnmodif = (Button) findViewById(R.id.btnmodif);
+        nomMagasin = (TextView) findViewById(R.id.nomMagasin);
+        nomMagasin.setText(getIntent().getStringExtra("magasin"));
         liste = (ListView) findViewById(R.id.listProduit);
+        Button btnRetour = (Button) findViewById(R.id.btnRetour);
 
-        Btnquitter.setOnClickListener(this);
-        Btnajout.setOnClickListener(this);
-        Btnmodif.setOnClickListener(this);
+        btnRetour.setOnClickListener(this);
 
         afficher();
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, tab);
         liste.setAdapter(adapter);
 
-         liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -68,50 +59,13 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
             }
 
         });
-
     }
 
     public void onClick(View v){
         switch(v.getId()){
-            case R.id.btnquitter:
-                quitter();
+            case R.id.btnRetour:
+                finish();
                 break;
-            case R.id.btnajout:
-                ajoutProduit();
-                break;
-        }
-    }
-
-    private void quitter(){
-        finish();
-    }
-
-    private void ajoutProduit(){
-        Intent intent = new Intent(this,VoirArticleMagasin.class);
-        intent.putExtra("magasin",magasin);
-        startActivityForResult(intent,1001);
-    }
-    private void voirArticle(){
-        Intent intent = new Intent(this,VoirArticle.class);
-        intent.putExtra("article",itemValue);
-        startActivityForResult(intent,1000);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == 1000) {
-
-            String s=data.getExtras().getString("value");
-            int i=Integer.parseInt(s.replaceAll("[\\D]", ""));
-            if (i==1) {
-                Toast.makeText(this, data.getExtras().getString("value"),
-                        Toast.LENGTH_SHORT).show();
-                tab.remove(itemPosition);
-                adapter.notifyDataSetChanged();
-            }
-            else if (i==2){
-                Toast.makeText(this, data.getExtras().getString("value"),
-                        Toast.LENGTH_SHORT).show();
-            }
         }
     }
 
@@ -129,5 +83,10 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
             while (c.moveToNext());
         }
         c.close();
+    }
+    private void voirArticle(){
+        Intent intent = new Intent(this,VoirArticle.class);
+        intent.putExtra("article", itemValue);
+        startActivityForResult(intent, 1000);
     }
 }

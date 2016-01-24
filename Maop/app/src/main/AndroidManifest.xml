@@ -17,6 +17,10 @@
         </activity>
         <activity android:name=".maListe" >
         </activity>
+        <activity android:name=".VoirArticle" >
+        </activity>
+        <activity android:name=".VoirArticleMagasin" >
+        </activity>
     </application>
 
 </manifest>
