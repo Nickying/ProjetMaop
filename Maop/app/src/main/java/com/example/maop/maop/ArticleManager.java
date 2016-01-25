@@ -76,6 +76,71 @@ public class ArticleManager {
     }
 
 
+	public long addListe(int idarticle,int quantité,int idmagazin) {
+        // Ajout d'un enregistrement dans la table
+
+        ContentValues values = new ContentValues();
+        values.put("idligne", idarticle);
+	values.put("quantité", quantité);
+	values.put("idmagasin", idmagasin);
+
+        // insert() retourne l'id du nouvel enregistrement inséré, ou -1 en cas d'erreur
+        return db.insert("ligne",null,values);
+        }
+
+    public int modListe(int idligne,int quantité) {
+        // modification d'un enregistrement
+        // valeur de retour : (int) nombre de lignes affectées par la requête
+
+        ContentValues values = new ContentValues();
+        values.put("quantité", quantité);
+
+        String where = "idligne"+" = ?";
+        String[] whereArgs = {idligne+""};
+
+        return db.update("ligne", values, where, whereArgs);
+        }
+
+
+
+    public int supListe(int idligne) {
+
+        // suppression d'un enregistrement
+        // valeur de retour : (int) nombre de lignes affectées par la clause WHERE, 0 sinon
+
+	String where = "idligne"+" = ?";
+        String[] whereArgs = {idligne+""};
+
+        return db.delete("ligne", where, whereArgs);
+        }
+	
+
+
+
+	public Cursor getListe(int idmagasin) {
+        // sélection de tous les enregistrements de la table
+        return db.rawQuery("select nomarticle,quantité, (prix*quantité) as prix from article a ,ligne l where a.idarticle=l.idarticle and l.idmagasin="+idmagasin, null);
+        }
+
+
+	
+	public Cursor getArticleMagasin(int idmagasin) {
+        // sélection de tous les enregistrements de la table
+        return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idmagasin"+idmagasin, null);
+        }
+	
+
+	public Cursor getArticleCatégorie(int idmagasin,String catégorie) {
+        // sélection de tous les enregistrements de la table
+        return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idmagasin"+idmagasin+"  "+catégorie, null);
+        }
+	
+	public Cursor getArticleid(idarticle) {
+        // sélection de tous les enregistrements de la table
+        return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idarticle= "+idarticle, null);
+        }
+
+
 
 
 
