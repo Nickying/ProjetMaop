@@ -26,6 +26,7 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
     private ArrayAdapter<String> adapter;
     private Button btnRetour;
     private Button btnCategorie;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
         btnCategorie.setOnClickListener(this);
 
         registerForContextMenu(btnCategorie);
+        id = getIntent().getStringExtra("id");
 
         afficher();
         adapter = new ArrayAdapter<String>(this,
@@ -99,7 +101,10 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
     private void voirArticle(){
         Intent intent = new Intent(this,VoirProduit.class);
         intent.putExtra("article", itemValue);
+        intent.putExtra("id",id);
+        intent.putExtra("idarcticle",itemPosition);
         startActivityForResult(intent, 1000);
+
     }
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
@@ -150,4 +155,6 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
         }
         return super.onContextItemSelected(item);
     }
+
+
 }

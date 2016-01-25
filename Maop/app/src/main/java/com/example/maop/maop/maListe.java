@@ -94,7 +94,8 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
     private void ajoutProduit(){
         Intent intent = new Intent(this,VoirArticleMagasin.class);
         intent.putExtra("magasin",magasin);
-        startActivity(intent);
+        intent.putExtra("id",value);
+        startActivityForResult(intent, 1001);
     }
     private void voirArticle(){
         Intent intent = new Intent(this,VoirArticle.class);
@@ -111,48 +112,41 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
                 Toast.makeText(this, data.getExtras().getString("value"),
                         Toast.LENGTH_SHORT).show();
                 tab.remove(itemPosition);
+                supprimer(itemPosition);
                 adapter.notifyDataSetChanged();
             }
             else if (i==2){
-                Toast.makeText(this, data.getExtras().getString("value"),
-                        Toast.LENGTH_SHORT).show();
+                afficher();
             }
             else if (i==3){
                 Toast.makeText(this, data.getExtras().getString("value"),
                         Toast.LENGTH_SHORT).show();
             }
         }
+       else if (resultCode == RESULT_OK && requestCode == 1001){
+           afficher();
+       }
     }
 
     private void afficher(){
         ArticleManager am = new ArticleManager(this);
         am.open();
-
-        /*Cursor c = am.getAnimaux();
-        if (c.moveToFirst())
-        {
-            do {
-                tab.add(c.getString(c.getColumnIndex(ArticleManager.)))
-                /*
-                tab.add(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
-                System.out.println(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
-            }
-            while (c.moveToNext());
-        }*/
         int i=Integer.parseInt(value.replaceAll("[\\D]", ""));
         Cursor c = am.getListe(i);
         if (c.moveToFirst())
         {
             do {
                 tab.add(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
-
-                /*tab.add(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
-                System.out.println(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));*/
             }
             while (c.moveToNext());
         }
         c.close();
     }
 
+    private void supprimer(int itemPosition) {
+        ArticleManager am  = new ArticleManager(this);
+        am.open();
+        am.supListe(itemPosition);
+    }
 
 }

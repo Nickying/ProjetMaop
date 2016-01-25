@@ -33,4 +33,63 @@
         android:id="@+id/nomArticle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/nomArticle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="description"
+        android:id="@+id/txtDescription"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/nomArticle"
+        android:layout_alignEnd="@+id/nomArticle" />
+
+    <EditText
+        android:layout_width="100px"
+        android:layout_height="125px"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:text="1"
+        android:layout_alignBottom="@+id/txtQuantite"
+        android:layout_toLeftOf="@+id/btnPlus"
+        android:layout_toStartOf="@+id/btnPlus" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Quantité : "
+        android:id="@+id/txtQuantite"
+        android:layout_marginBottom="67dp"
+        android:layout_above="@+id/btnAjoutProduit"
+        android:layout_alignLeft="@+id/nomArticle"
+        android:layout_alignStart="@+id/nomArticle" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/btnPlus"
+        android:layout_above="@+id/btnMoins"
+        android:layout_alignLeft="@+id/btnRetourProduit"
+        android:layout_alignStart="@+id/btnRetourProduit" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:id="@+id/btnMoins"
+        android:layout_alignTop="@+id/txtQuantite"
+        android:layout_alignLeft="@+id/btnPlus"
+        android:layout_alignStart="@+id/btnPlus" />
 </RelativeLayout>
