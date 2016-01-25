@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class VoirArticle extends AppCompatActivity implements View.OnClickListener{
@@ -12,6 +13,10 @@ public class VoirArticle extends AppCompatActivity implements View.OnClickListen
     private Button btnRetour;
     private Button btnModif;
     private Button btnSupp;
+    private Button btnPlus;
+    private Button btnMoins;
+    private EditText txtQuatite;
+    private TextView description;
     private String value;
 
     @Override
@@ -26,10 +31,16 @@ public class VoirArticle extends AppCompatActivity implements View.OnClickListen
         btnRetour = (Button) findViewById(R.id.retour);
         btnModif = (Button) findViewById(R.id.modification);
         btnSupp = (Button) findViewById(R.id.supprimer);
+        btnPlus = (Button) findViewById(R.id.btnPlus);
+        btnMoins = (Button) findViewById(R.id.btnMoins);
+        txtQuatite = (EditText) findViewById(R.id.editText);
+        description = (TextView) findViewById(R.id.txtQuantite);
 
         btnRetour.setOnClickListener(this);
         btnModif.setOnClickListener(this);
         btnSupp.setOnClickListener(this);
+        btnPlus.setOnClickListener(this);
+        btnMoins.setOnClickListener(this);
 
     }
 
@@ -41,9 +52,24 @@ public class VoirArticle extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.modification:
                 finish();
+                break;
             case R.id.retour:
-                value="retour";
+                value="3";
                 finish();
+                break;
+            case R.id.btnPlus:
+                String quantite = txtQuatite.getText().toString();
+                int i=Integer.parseInt(quantite.replaceAll("[\\D]", ""));
+                i++;
+                txtQuatite.setText(String.valueOf(i));
+                break;
+            case R.id.btnMoins:
+                String quantite2 = txtQuatite.getText().toString();
+                int i2=Integer.parseInt(quantite2.replaceAll("[\\D]", ""));
+                if(i2>1){
+                    i2--;
+                }
+                txtQuatite.setText(String.valueOf(i2));
                 break;
         }
     }
@@ -55,5 +81,10 @@ public class VoirArticle extends AppCompatActivity implements View.OnClickListen
         // Activity finished ok, return the data
         setResult(RESULT_OK, data);
         super.finish();
+    }
+    @Override
+    public void onBackPressed() {
+        value="2";
+        finish(); // Do Here what ever you want do on back press;
     }
 }

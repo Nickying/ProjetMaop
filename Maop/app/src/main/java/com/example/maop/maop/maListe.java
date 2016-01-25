@@ -26,6 +26,7 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
     private int itemPosition;
     private ArrayAdapter<String> adapter;
     private String magasin;
+    private String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
         Btnquitter.setOnClickListener(this);
         Btnajout.setOnClickListener(this);
         Btnmodif.setOnClickListener(this);
+
+        value = getIntent().getStringExtra("value");
+
 
         afficher();
         adapter = new ArrayAdapter<String>(this,
@@ -113,6 +117,10 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
                 Toast.makeText(this, data.getExtras().getString("value"),
                         Toast.LENGTH_SHORT).show();
             }
+            else if (i==3){
+                Toast.makeText(this, data.getExtras().getString("value"),
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -120,12 +128,26 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
         ArticleManager am = new ArticleManager(this);
         am.open();
 
-        Cursor c = am.getAnimaux();
+        /*Cursor c = am.getAnimaux();
+        if (c.moveToFirst())
+        {
+            do {
+                tab.add(c.getString(c.getColumnIndex(ArticleManager.)))
+                /*
+                tab.add(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
+                System.out.println(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
+            }
+            while (c.moveToNext());
+        }*/
+        int i=Integer.parseInt(value.replaceAll("[\\D]", ""));
+        Cursor c = am.getListe(i);
         if (c.moveToFirst())
         {
             do {
                 tab.add(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
-                System.out.println(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
+
+                /*tab.add(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));
+                System.out.println(c.getString(c.getColumnIndex(ArticleManager.KEY_NOMARTICLE)));*/
             }
             while (c.moveToNext());
         }

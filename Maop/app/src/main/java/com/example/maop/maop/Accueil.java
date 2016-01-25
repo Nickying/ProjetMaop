@@ -10,10 +10,11 @@ import android.widget.ImageButton;
 
 public class Accueil extends AppCompatActivity implements View.OnClickListener {
 
-    String auchan;
-    String carrefour;
-    String inter;
-    String leclerc;
+    private String auchan;
+    private String carrefour;
+    private String inter;
+    private String leclerc;
+    private String value;
 
     final String magasin = "magasin";
 
@@ -34,10 +35,10 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
         BtnLeclerc.setOnClickListener(this);
         Btnquitter.setOnClickListener(this);
 
-        auchan="auchan";
-        carrefour="carrefour";
-        inter="inter";
-        leclerc="leclerc";
+        auchan="Auchan";
+        carrefour="Carrefour";
+        inter="Intermarché";
+        leclerc="Leclerc";
     }
 
     public void onClick(View v){
@@ -62,25 +63,33 @@ public class Accueil extends AppCompatActivity implements View.OnClickListener {
 
     private void lancerAuchan(){
         Intent liste = new Intent(this,maListe.class);
+        value = "3";
         liste.putExtra(magasin,auchan);
+        liste.putExtra("value",value);
         startActivity(liste);
     }
 
     private void lancerCarrefour(){
         Intent liste = new Intent(this,maListe.class);
+        value = "1";
         liste.putExtra(magasin, carrefour);
+        liste.putExtra("value",value);
         startActivity(liste);
     }
 
     private void lancerInter(){
         Intent liste = new Intent(this,maListe.class);
+        value = "2";
         liste.putExtra(magasin, inter);
+        liste.putExtra("value",value);
         startActivity(liste);
     }
 
     private void lancerLeclerc(){
         Intent liste = new Intent(this,maListe.class);
+        value = "4";
         liste.putExtra(magasin,leclerc);
+        liste.putExtra("value",value);
         startActivity(liste);
     }
 

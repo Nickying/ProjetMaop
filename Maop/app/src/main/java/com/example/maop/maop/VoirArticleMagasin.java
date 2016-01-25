@@ -112,12 +112,37 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
     public boolean onContextItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.viande:
+            case R.id.Boissons:
                 Toast.makeText(getApplicationContext(),
                         "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
                         .show();
                 break;
-            case R.id.test:
+            case R.id.Boucherie:
+                Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();
+                break;
+            case R.id.Volaille:
+                Toast.makeText(getApplicationContext(),
+                        "test", Toast.LENGTH_LONG)
+                        .show();
+                break;
+            case R.id.Legumes:
+                Toast.makeText(getApplicationContext(),
+                        "test", Toast.LENGTH_LONG)
+                        .show();
+                break;
+            case R.id.Fruits:
+                Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();
+                break;
+            case R.id.Laits:
+                Toast.makeText(getApplicationContext(),
+                        "test", Toast.LENGTH_LONG)
+                        .show();
+                break;
+            case R.id.Fromages:
                 Toast.makeText(getApplicationContext(),
                         "test", Toast.LENGTH_LONG)
                         .show();

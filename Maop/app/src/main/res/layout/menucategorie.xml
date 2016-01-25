@@ -4,10 +4,25 @@
     android:layout_height="match_parent">
 
 
-    <item android:id="@+id/viande"
-        android:title="Viande"
+    <item android:id="@+id/Boucherie"
+        android:title="Boucherie"
         />
-    <item android:id="@+id/test"
-        android:title="test"
+    <item android:id="@+id/Fromages"
+        android:title="Fromages"
         />
+    <item android:id="@+id/Laits"
+        android:title="Laits"
+        />
+    <item android:id="@+id/Legumes"
+    android:title="Legumes"
+    />
+    <item android:id="@+id/Fruits"
+        android:title="Fruits"
+        />
+    <item android:id="@+id/Boissons"
+        android:title="Legumes"
+        />
+    <item android:id="@+id/Volaille"
+    android:title="Volaille"
+    />
 </menu>
