@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -89,7 +90,7 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
     private void ajoutProduit(){
         Intent intent = new Intent(this,VoirArticleMagasin.class);
         intent.putExtra("magasin",magasin);
-        startActivityForResult(intent,1001);
+        startActivity(intent);
     }
     private void voirArticle(){
         Intent intent = new Intent(this,VoirArticle.class);
@@ -97,7 +98,7 @@ public class maListe extends AppCompatActivity implements View.OnClickListener{
         startActivityForResult(intent,1000);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == 1000) {
 
             String s=data.getExtras().getString("value");

@@ -85,7 +85,7 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
         c.close();
     }
     private void voirArticle(){
-        Intent intent = new Intent(this,VoirArticle.class);
+        Intent intent = new Intent(this,VoirProduit.class);
         intent.putExtra("article", itemValue);
         startActivityForResult(intent, 1000);
     }
