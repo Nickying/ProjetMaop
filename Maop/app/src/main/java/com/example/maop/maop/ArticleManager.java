@@ -1,5 +1,6 @@
 package com.example.maop.maop;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -76,24 +77,24 @@ public class ArticleManager {
     }
 
 
-	public long addListe(int idarticle,int quantité,int idmagazin) {
+	public long addListe(int idarticle,int quantitÃ©,int idmagasin) {
         // Ajout d'un enregistrement dans la table
 
         ContentValues values = new ContentValues();
         values.put("idligne", idarticle);
-	values.put("quantité", quantité);
+	values.put("quantitÃ©", quantitÃ©);
 	values.put("idmagasin", idmagasin);
 
-        // insert() retourne l'id du nouvel enregistrement inséré, ou -1 en cas d'erreur
+        // insert() retourne l'id du nouvel enregistrement insï¿½rï¿½, ou -1 en cas d'erreur
         return db.insert("ligne",null,values);
         }
 
-    public int modListe(int idligne,int quantité) {
+    public int modListe(int idligne,int quantitÃ©) {
         // modification d'un enregistrement
-        // valeur de retour : (int) nombre de lignes affectées par la requête
+        // valeur de retour : (int) nombre de lignes affectï¿½es par la requï¿½te
 
         ContentValues values = new ContentValues();
-        values.put("quantité", quantité);
+        values.put("quantitÃ©", quantitÃ©);
 
         String where = "idligne"+" = ?";
         String[] whereArgs = {idligne+""};
@@ -106,7 +107,7 @@ public class ArticleManager {
     public int supListe(int idligne) {
 
         // suppression d'un enregistrement
-        // valeur de retour : (int) nombre de lignes affectées par la clause WHERE, 0 sinon
+        // valeur de retour : (int) nombre de lignes affectï¿½es par la clause WHERE, 0 sinon
 
 	String where = "idligne"+" = ?";
         String[] whereArgs = {idligne+""};
@@ -118,25 +119,25 @@ public class ArticleManager {
 
 
 	public Cursor getListe(int idmagasin) {
-        // sélection de tous les enregistrements de la table
-        return db.rawQuery("select nomarticle,quantité, (prix*quantité) as prix from article a ,ligne l where a.idarticle=l.idarticle and l.idmagasin="+idmagasin, null);
+        // sï¿½lection de tous les enregistrements de la table
+        return db.rawQuery("select nomarticle,quantitÃ©, (prix*quantitÃ©) as prix from article a ,ligne l where a.idarticle=l.idarticle and l.idmagasin="+idmagasin, null);
         }
 
 
 	
 	public Cursor getArticleMagasin(int idmagasin) {
-        // sélection de tous les enregistrements de la table
+        // sï¿½lection de tous les enregistrements de la table
         return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idmagasin"+idmagasin, null);
         }
 	
 
-	public Cursor getArticleCatégorie(int idmagasin,String catégorie) {
-        // sélection de tous les enregistrements de la table
-        return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idmagasin"+idmagasin+"  "+catégorie, null);
+	public Cursor getArticleCatÃ©gorie(int idmagasin,String catÃ©gorie) {
+        // sï¿½lection de tous les enregistrements de la table
+        return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idmagasin"+idmagasin+"  "+catÃ©gorie, null);
         }
 	
-	public Cursor getArticleid(idarticle) {
-        // sélection de tous les enregistrements de la table
+	public Cursor getArticleid(String idarticle) {
+        // sï¿½lection de tous les enregistrements de la table
         return db.rawQuery("SELECT * FROM "+TABLE_NAME+" where idarticle= "+idarticle, null);
         }
 

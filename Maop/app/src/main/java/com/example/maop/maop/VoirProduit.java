@@ -23,7 +23,7 @@ public class VoirProduit extends AppCompatActivity implements View.OnClickListen
         value = getIntent().getStringExtra("article");
         nomArticle.setText(value);
 
-        btnRetour = (Button) findViewById(R.id.retour);
+        btnRetour = (Button) findViewById(R.id.btnRetourProduit);
         btnAjout = (Button) findViewById(R.id.btnAjoutProduit);
 
         btnRetour.setOnClickListener(this);
@@ -32,14 +32,11 @@ public class VoirProduit extends AppCompatActivity implements View.OnClickListen
 
     public void onClick(View v){
         switch(v.getId()){
-            case R.id.supprimer:
+            case R.id.btnRetourProduit:
                 value="1";
                 finish();
                 break;
-            case R.id.modification:
-                finish();
-            case R.id.retour:
-                value="retour";
+            case R.id.btnAjoutProduit:
                 finish();
                 break;
         }
