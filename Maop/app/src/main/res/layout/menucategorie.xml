@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200px"
+    android:layout_height="match_parent">
+
+
+    <item android:id="@+id/viande"
+        android:title="Viande"
+        />
+    <item android:id="@+id/test"
+        android:title="test"
+        />
+</menu>

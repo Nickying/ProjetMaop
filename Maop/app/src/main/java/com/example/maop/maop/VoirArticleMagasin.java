@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +24,8 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
     private String itemValue;
     private int itemPosition;
     private ArrayAdapter<String> adapter;
+    private Button btnRetour;
+    private Button btnCategorie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +35,13 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
         nomMagasin = (TextView) findViewById(R.id.nomMagasin);
         nomMagasin.setText(getIntent().getStringExtra("magasin"));
         liste = (ListView) findViewById(R.id.listProduit);
-        Button btnRetour = (Button) findViewById(R.id.btnRetour);
+        btnRetour = (Button) findViewById(R.id.btnRetour);
+        btnCategorie = (Button) findViewById(R.id.btnCategorie);
 
         btnRetour.setOnClickListener(this);
+        btnCategorie.setOnClickListener(this);
+
+        registerForContextMenu(btnCategorie);
 
         afficher();
         adapter = new ArrayAdapter<String>(this,
@@ -66,6 +75,9 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
             case R.id.btnRetour:
                 finish();
                 break;
+            case R.id.btnCategorie:
+                v.showContextMenu();
+                break;
         }
     }
 
@@ -88,5 +100,29 @@ public class VoirArticleMagasin extends AppCompatActivity implements View.OnClic
         Intent intent = new Intent(this,VoirProduit.class);
         intent.putExtra("article", itemValue);
         startActivityForResult(intent, 1000);
+    }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.layout.menucategorie, menu);
+    }
+
+    @Override
+
+    public boolean onContextItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.viande:
+                Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        .show();
+                break;
+            case R.id.test:
+                Toast.makeText(getApplicationContext(),
+                        "test", Toast.LENGTH_LONG)
+                        .show();
+                break;
+        }
+        return super.onContextItemSelected(item);
     }
 }
